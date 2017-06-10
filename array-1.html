@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+  <script>
+  let data = [1, 2, 3, 4, 5];
+  let sumOfSquares = 0;
+  data.forEach(v => {
+    sumOfSquares += v * v;
+  });
+  data.forEach((v, i, a) => {
+    a[i] = v + 1; //每个数组元素的值自加1
+  });
+
+  let a = [33, 4, 1111, 222];
+  a.sort();
+  a.sort((a, b) => {
+    return a - b;
+  });
+
+  let b = ['ant', 'Bug', 'cat', 'Dog'];
+  b.sort();
+  b.sort((s, t) => {
+    let a = s.toLowerCase();
+    let b = t.toLowerCase();
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  });
+
+  let c = [1, 2, 3];
+  let d = c.map(x => {
+    return x * x;
+  });
+
+  let e = [5, 4, 3, 2, 1];
+  let smallValues = e.filter(v => {
+    return v < 3;
+  });
+  let everyOther = e.filter((v, i) => {
+    return i % 2 == 0;
+  });
+
+  let f = [1, 2, 3, 4, 5];
+  let everyFnResult = f.every(x => {
+    return x < 10;
+  });
+
+  let g = [1, 2, 3, 4, 5];
+  let someFnResult = g.some(x => {
+    return x < 10;
+  });
+
+
+  let isArray1 = Array.isArray([]);
+  let isArray2 = Array.isArray({});
+
+  let s = "javascript";
+  let s1 = Array.prototype.join.call(s, " ");
+  let s2 = Array.prototype.filter.call(s, v => {
+    return v.match(/[^aeiou]/);
+  }).join("");
+  </script>
+</body>
+
+</html>
