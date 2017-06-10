@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+  <script>
+  let o = {
+    x: 1,
+    y: {
+      z: [false, null, ""]
+    }
+  };
+  let s = JSON.stringify(o);
+  let p = JSON.parse(s); //p是o的深拷贝
+  </script>
+</body>
+
+</html>
