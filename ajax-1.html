@@ -74,6 +74,77 @@
     };
     request.send(null);
   }
+
+  function encodeFormData(data) {
+    if (!data) return "";
+    let pairs = [];
+    for (name in data) {
+      if (!data.hasOwnProperty(name)) continue; //跳过继承属性
+      if (typeof data[name] === "function") continue; //跳过方法
+      let value = data[name].toString();
+      name = encodeURIComponent(name.replace("%20", "+"));
+      value = encodeURIComponent(value.replace("%20", "+"));
+      pairs.push(name + "=" + value);
+    }
+    return pairs.json("&");
+  }
+
+  function postData(url, data, callback) {
+    let request = new XMLHttpRequest();
+    request.open("POST", url);
+    request.onreadystatechange = function() {
+      if (request.readyState === 4 && callback) {
+        callback(request);
+      }
+    };
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send(encodeURIComponent(data));
+  }
+
+  function getData(url, data, callback) {
+    let request = new XMLHttpRequest();
+    request.open("GET", url + "?" + encodeURIComponent(data));
+    request.onreadystatechange = function() {
+      if (request.readyState === 4 && callback) {
+        callback(request);
+      }
+    };
+    request.send(null);
+  }
+
+  function postJSON(url, data, callback) {
+    let request = new XMLHttpRequest();
+    request.open("POST", url);
+    request.onreadystatechange = function() {
+      if (request.readyState === 4 && callback) {
+        callback(request);
+      }
+    };
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(JSON.stringify(data));
+  }
+
+  //查找有data-uploadto属性的全部<input type="file">元素
+  //并注册onchange事件处理程序
+  //这样任何选择的文件都会自动通过POST方法发送到指定的"uploadto" URL
+  //服务器的响应是忽略的
+  whenReady(function() { //当文档准备就绪时运行
+    let elts = document.getElementsByTagName("input");
+    for (let i = 0; i < elts.length; i++) {
+      let input = elts[i];
+      if (input.type !== "file") continue; //跳过所有非文件上传元素
+      let url = input.getAttribute("data-uploadto");
+      if (!url) continue; //跳过任何没有URL的元素
+
+      input.addEventListener("change", function() { //当用户选择文件时
+        let file = this.files[0]; //假设单个文件选择
+        if (!file) return; //如果没有文件，不做任何事情
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.send(file); //把文件作为主体发送
+      }, false)
+    }
+  });
   </script>
 </body>
 
