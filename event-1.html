@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+  <script>
+  //设置window对象的onload属性为一个函数
+  //该函数是事件处理程序：当文档加载完毕时调用它
+  window.onload = function() {
+    let elt = document.getElementById("shipping_address");
+    //注册事件处理程序函数，
+    //在表单提交之前调用它
+    elt.onsubmit = function() {
+      alert("thanks for clicking me!");
+    };
+  }
+  </script>
+</body>
+
+</html>

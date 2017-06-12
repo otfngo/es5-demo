@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+  <script>
+  function postMessage(msg) {
+    let request = new XMLHttpRequest();
+    request.open("POST", "/log.php");
+    //用请求主体发送纯文本消息
+    request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+    request.send(msg); //把msg作为请求主体发送
+    //请求完成，我们将忽略任何响应和任何错误
+  }
+
+  //发出一个HTTP GET请求以获得指定URL的内容
+  //当响应成功到达，验证它是否是纯文本
+  //如果是，把它传递给指定回调函数
+  function getText(url, callback) {
+    let request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.onreadystatechange = function() {
+      //如果请求完成，则它是成功的
+      if (request.readyState === 4 && request.status === 200) {
+        let type = request.getResponseHeader("Content-Type");
+        if (type.match(/^text/)) {
+          callback(request.responseText);
+        }
+      }
+    };
+    request.send(null);
+  }
+
+  //发起同步的HTTP GET请求以获得指定URL的内容
+  //返回响应文本，或如果请求不成功或响应不是文本就报错
+  function getTextSync(url) {
+    let request = new XMLHttpRequest();
+    request.open("GET", url, false);
+    request.send(null);
+
+    if (request.status !== 200) {
+      throw new Error(request.statusText);
+    }
+
+    let type = request.getResponseHeader("Content-Type");
+    if (!type.match(/^text/)) {
+      throw new Error("expected textual response;got:" + type);
+    }
+
+    return request.responseText;
+  }
+
+  //发起HTTP GET响应以获取指定URL的内容
+  //当响应到达时，把它以解析后的XML Document对象、解析后的JSON对象
+  //或字符串形式传递给回调函数
+  function get(url, callback) {
+    let request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.onreadystatechange = function() { //定义事件监听器
+      if (request.readyState === 4 && request.status === 200) {
+        let type = request.getResponseHeader("Content-Type");
+        if (type.indexOf("xml") !== -1 && request.responseXML) {
+          callback(request.responseXML); //Document对象响应
+        } else if (type === "application/json") {
+          callback(JSON.parse(request.responseText)); //JSON响应
+        } else {
+          callback(request.responseText); //字符串响应
+        }
+      }
+    };
+    request.send(null);
+  }
+  </script>
+</body>
+
+</html>
