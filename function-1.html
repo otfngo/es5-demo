@@ -11,11 +11,20 @@
   let calculator = {
     operand1: 1,
     operand2: 1,
-    add: function(){
+    add: function() {
       this.result = this.operand1 + this.operand2;
     }
   };
   calculator.add();
+
+  function max() {
+    let max = Number.NEGATIVE_INFINITY;
+    for (var i = 0; i < arguments.length; i++) {
+      if (arguments[i] > max) max = arguments[i];
+    }
+    return max;
+  }
+  let largest = max(1, 10, 10000, 232); //=>10000
   </script>
 </body>
 
