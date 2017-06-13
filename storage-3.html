@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+  <script>
+  /**
+   * 实现基于cookie的存储API
+   * cookieStorage.js
+   * 本类实现像localStorage和sessionStorage一样的存储API，不同的是，基于HTTP cookie实现它
+   */
+  function cookieStorage(maxage, path) {
+    //获取一个存储全部cookie信息的对象
+    let cookie = (function() {
+      let cookie = {};
+      let all = document.cookie;
+      if (all === "") return cookie;
+      let list = all.split("; ");
+      for (let i = 0; i < list.length; i++) {
+        let c = list[i];
+        let p = c.indexOf("=");
+        let name = c.substring(0, p);
+        let value = c.substring(p + 1);
+        value = decodeURIComponent(value);
+        cookie[name] = value;
+      }
+      return cookie;
+    }());
+
+    //将所有cookie的名字存储到一个数组中
+    let keys = [];
+    for (key in cookie) {
+      keys.push(key);
+    }
+
+    //现在定义存储API公共的属性和方法
+    //存储的cookie的个数
+    this.length = keys.length;
+
+    //返回第n个cookie的名字，如果n越界则返回null
+    this.key = function(n) {
+      if (n < 0 || n >= keys.length) return null;
+      return keys[n];
+    };
+
+    //返回指定名字的cookie值，如果不存在则返回null
+    this.getItem = function(name) {
+      return cookie[name] || null;
+    };
+
+    //存储cookie值
+    this.setItem = function(key, value) {
+      if (!(key in cookie)) {
+        keys.push(key);
+        this.length++;
+      }
+
+      //将该名/值对数据存储到cookie对象中
+      cookie[key] = value;
+
+      //开始正式设置cookie
+      //首先将要存储的cookie的值进行编码，同时创建一个"名字=编码后的值"形式的字符串
+      let c = key + "=" + encodeURIComponent(value);
+
+      //将cookie的属性也加入到该字符串中
+      if (maxage) c += "; max-age=" + maxage;
+      if (path) c += "; path=" + path;
+
+      document.cookie = c;
+    };
+
+    //删除指定的cookie
+    this.removeItem = function(key) {
+      if (!(key in cookie)) return;
+
+      delete cookie[key];
+
+      for (var i = 0; i < keys.length; i++) {
+        if (keys[i] === key) {
+          keys.splice(i, 1);
+          break;
+        }
+      }
+      this.length--;
+
+      //最终通过将该cookie值设置为空字符串以及将有效值设置为0来删除指定的cookie
+      document.cookie = key + "=; max-age=0";
+    };
+
+    //删除所有的cookie
+    this.clear = function() {
+      for (var i = 0; i < keys.length; i++) {
+        document.cookie = keys[i] + "=; max-age=0";
+      }
+
+      //重置所有的内部状态
+      cookie = {};
+      keys = [];
+      this.length = 0;
+    };
+  }
+  </script>
+</body>
+
+</html>
