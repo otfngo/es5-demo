@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script src="scripts/jquery.js"></script>
+</head>
+
+<body>
+  <script>
+  jQuery.noConflict(); //还原$()为初始值
+  jQuery(function($) { //让$()成为jQery 对象的局部别名
+    let img = $("<img />", { //新建一个<img> 元素
+      scr: url, //具有HTML属性
+      css: { //CSS样式
+        borderWidth: 5
+      },
+      click: handleClick //和事件处理程序
+    });
+
+    $("h1").css("font-size", function(i, curval) {
+      return Math.round(1.25 * parseInt(curval));
+    });
+
+    let elt = $("#sprite");
+    //获取当前位置，
+    //返回的是元素的绝对位置，用相对于文档的坐标来表示
+    let position = elt.offset();
+    position.top += 100; //改变Y坐标
+    elt.offset(position); //设置新位置
+
+    //将所有h1元素向右移动，移动的距离取决于它们在文档中的位置
+    $("h1").offset(function(index, currentCoordinates) {
+      return {
+        left: currentCoordinates.left + 25 * index,
+        top: currentCoordinates.top
+      };
+    });
+
+    //根据页面数n来滚动窗口。n可以是分数或负数
+    function page(n) {
+      let w = $(window); //将window封装为jQuery对象
+      let pagesize = w.height(); //得到页面大小
+      let current = w.scrollTop(); //得到当前滚动条位置
+      w.scrollTop(current + n * pagesize); //设置新的滚动条位置
+    }
+
+    //给文档结尾添加一个带有"linklist" id的新div
+    $(document.body).append('<div id="linklist"><h1>list of links</h1></div>');
+    //将文档中的所有链接复制并插入该新div中
+    $("a").clone().appendTo('#linklist');
+    //在每一个链接后面插入<br />元素，使其以独立行显示
+    $("#linklist > a").after('<br />');
+  });
+  </script>
+</body>
+
+</html>
