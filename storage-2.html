@@ -11,7 +11,7 @@
   // document.cookie = "version=" + encodeURIComponent(document.lastModified);
 
   //以名/值的形式存储cookie
-  //同时采用 encodeURIComponent() 含税进行编码，来转义分号、逗号和空白符
+  //同时采用 encodeURIComponent() 方式进行编码，来转义分号、逗号和空白符
   //如果 daysToLive 是一个数字，设置 max-age 属性为该数值表示 cookie 直到指定的天数
   //到了才会过期。如果 daysToLive 是0就表示删除cookie
   function setcookie(name, value, daysToLive) {
@@ -33,7 +33,7 @@
       let c = list[i];
       let p = c.indexOf("=");
       let name = c.substring(0, p);
-      let value = c.substring(p + 1)；
+      let value = c.substring(p + 1);
       value = decodeURIComponent(value);
       cookie[name] = value;
     }
