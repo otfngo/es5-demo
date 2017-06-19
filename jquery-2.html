@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <script src="scripts/jquery.js"></script>
+  <script src="src/vendor/jquery.js"></script>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     //每隔60秒加载并显示最新的状态报告
     setInterval(function() {
       $("#status").load("status_report.html");
-    }, 600000);
+    }, 60*1000);
 
     //加载并显示天气预报的温度部分
     $("#temp").load("wheather_report.html #temperature");

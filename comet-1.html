@@ -8,14 +8,14 @@
 
 <body>
   <script>
-  window.onload = Function() {
+  window.onload = function() {
     let nick = prompt("enter your nickname");
     let input = document.getElementById("input");
     input.focus();
 
     //通过EventSource注册新消息的通知
     let chat = new EventSource("/chat");
-    chat.onmessage = Function(event) { //当捕获一条消息时
+    chat.onmessage = function(event) { //当捕获一条消息时
       let msg = event.data; //从事件对象中取得文本数据
       let node = document.createTextNode(msg);
       let div = document.createElement("div");

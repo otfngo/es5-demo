@@ -8,9 +8,9 @@
 
 <body>
   <script>
-  function postMessage(msg) {
+  function postMessage(url, msg) {
     let request = new XMLHttpRequest();
-    request.open("POST", "/log.php");
+    request.open("POST", url);
     //用请求主体发送纯文本消息
     request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
     request.send(msg); //把msg作为请求主体发送
@@ -24,7 +24,7 @@
     let request = new XMLHttpRequest();
     request.open("GET", url);
     request.onreadystatechange = function() {
-      //如果请求完成，则它是成功的
+      //如果请求完成，且它是成功的
       if (request.readyState === 4 && request.status === 200) {
         let type = request.getResponseHeader("Content-Type");
         if (type.match(/^text/)) {
@@ -130,7 +130,7 @@
   //服务器的响应是忽略的
   whenReady(function() { //当文档准备就绪时运行
     let elts = document.getElementsByTagName("input");
-    for (let i = 0; i < elts.length; i++) {
+    for (let i = 0, len = elts.length; i < len; i++) {
       let input = elts[i];
       if (input.type !== "file") continue; //跳过所有非文件上传元素
       let url = input.getAttribute("data-uploadto");

@@ -28,7 +28,7 @@
     return operator(operand1, operand2);
   }
 
-  //这行代码所示的函数调用实际上计算了(2+3)+(4+5)的值
+  //这行代码所示的函数调用实际上计算了(2+3)+(4*5)的值
   let i = operate(add, operate(add, 2, 3), operate(multiply, 4, 5));
 
   //这个例子重复实现一个简单的函数

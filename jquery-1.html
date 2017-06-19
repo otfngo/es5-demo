@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <script src="scripts/jquery.js"></script>
+  <script src="src/vendor/jquery.js"></script>
 </head>
 
 <body>
@@ -46,7 +46,7 @@
       w.scrollTop(current + n * pagesize); //设置新的滚动条位置
     }
 
-    //给文档结尾添加一个带有"linklist" id的新div
+    //给文档结尾添加一个带有"linklist"id的新div
     $(document.body).append('<div id="linklist"><h1>list of links</h1></div>');
     //将文档中的所有链接复制并插入该新div中
     $("a").clone().appendTo('#linklist');

@@ -19,8 +19,8 @@
 
   let a = [33, 4, 1111, 222];
   a.sort();
-  a.sort((a, b) => {
-    return a - b;
+  a.sort((s, t) => {
+    return s - t;
   });
 
   let b = ['ant', 'Bug', 'cat', 'Dog'];
@@ -47,13 +47,13 @@
   });
 
   let f = [1, 2, 3, 4, 5];
-  let everyFnResult = f.every(x => {
-    return x < 10;
+  let everyFnResult = f.every(v => {
+    return v < 10;
   });
 
   let g = [1, 2, 3, 4, 5];
-  let someFnResult = g.some(x => {
-    return x < 10;
+  let someFnResult = g.some(v => {
+    return v < 10;
   });
 
 
@@ -62,7 +62,7 @@
 
   let s = "javascript";
   let s1 = Array.prototype.join.call(s, " ");
-  let s2 = Array.prototype.filter.call(s, v => {
+  let s2 = Array.prototype.filter.call(s, (v) => {
     return v.match(/[^aeiou]/);
   }).join("");
   </script>
