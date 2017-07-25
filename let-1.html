@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <script>
+<script>
   //javascript中的原始值(undefined,null,布尔值，数字，字符串)是不可更改的
   //javascript中的对象(数组和对象)是可更改的
   //字符串中所有方法看上去返回了一个修改后的字符串，实际上返回的是一个新的字符串值
@@ -36,24 +36,7 @@
   b[0] = 1; //通过变量b来修改引用的数组
   a[0] //=>1:变量a也会修改
   a === b //=>true:a和b引用同一个数组，因此它们相等
-
-
-  //通过循环来完成数组的复制
-  let a = ['a', 'b', 'c'];
-  let b = [];
-  for (let i = 0; i < a.length; i++) {
-    b[i] = a[i];
-  }
-
-  //定义一个比较两个数组的函数
-  function equalArrays(a, b) {
-    if (a.length != b.length) return false;
-    for (let i = 0; i < a.length; i++) {
-      if (a[i] !== b[i]) return false;
-    }
-    return true;
-  }
-  </script>
+</script>
 </body>
 
 </html>

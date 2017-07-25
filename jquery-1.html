@@ -8,18 +8,17 @@
 </head>
 
 <body>
-  <script>
-  jQuery.noConflict(); //还原$()为初始值
-  jQuery(function($) { //让$()成为jQery 对象的局部别名
-    let img = $("<img />", { //新建一个<img> 元素
-      scr: url, //具有HTML属性
-      css: { //CSS样式
+<script>
+  (function ($) {
+    let img = $("<img />", {
+      scr: url,
+      css: {
         borderWidth: 5
       },
-      click: handleClick //和事件处理程序
+      click: handleClick
     });
 
-    $("h1").css("font-size", function(i, curval) {
+    $("h1").css("font-size", function (i, curval) {
       return Math.round(1.25 * parseInt(curval));
     });
 
@@ -31,7 +30,7 @@
     elt.offset(position); //设置新位置
 
     //将所有h1元素向右移动，移动的距离取决于它们在文档中的位置
-    $("h1").offset(function(index, currentCoordinates) {
+    $("h1").offset(function (index, currentCoordinates) {
       return {
         left: currentCoordinates.left + 25 * index,
         top: currentCoordinates.top
@@ -52,8 +51,8 @@
     $("a").clone().appendTo('#linklist');
     //在每一个链接后面插入<br />元素，使其以独立行显示
     $("#linklist > a").after('<br />');
-  });
-  </script>
+  })(jQuery);
+</script>
 </body>
 
 </html>

@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <script>
+<script>
   let name = localStorage.username;
   name = localStorage["username"];
   if (!name) {
@@ -18,7 +18,6 @@
   for (name in localStorage) {
     let value = localStorage[name];
   }
-
 
   //当存储一个数字的时候，会把它自动转换成一个字符串
   //但是，当获取该值的时候别忘记了手动将其转换成数字类型
@@ -33,7 +32,6 @@
   localStorage.data = JSON.stringify(data);
   let data = JSON.parse(localStorage.data);
 
-
   localStorage.setItem("x", 1); //以 x 的名字存储一个数值
   localStorage.getItem("x"); //获取数值
 
@@ -45,7 +43,7 @@
 
   localStorage.removeItem("x"); //删除 x 项
   localStorage.clear(); //全部删除
-  </script>
+</script>
 </body>
 
 </html>

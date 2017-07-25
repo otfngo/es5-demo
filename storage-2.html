@@ -7,14 +7,14 @@
 </head>
 
 <body>
-  <script>
+<script>
   // document.cookie = "version=" + encodeURIComponent(document.lastModified);
 
   //以名/值的形式存储cookie
   //同时采用 encodeURIComponent() 方式进行编码，来转义分号、逗号和空白符
   //如果 daysToLive 是一个数字，设置 max-age 属性为该数值表示 cookie 直到指定的天数
   //到了才会过期。如果 daysToLive 是0就表示删除cookie
-  function setcookie(name, value, daysToLive) {
+  function setCookie(name, value, daysToLive) {
     let cookie = name + "=" + encodeURIComponent(value);
     if (typeof(daysToLive) === "number") {
       cookie += "; max-age=" + (daysToLive * 24 * 60 * 60);
@@ -24,12 +24,12 @@
 
   //将document.cookie的值以名/值对组成的一个对象返回
   //假设存储cookie的值的时候是采用encodeURIComponent()函数编码的
-  function getcookie() {
+  function getCookie() {
     let cookie = {};
     let all = document.cookie;
     if (all === "") return;
     let list = all.split("; ");
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
       let c = list[i];
       let p = c.indexOf("=");
       let name = c.substring(0, p);
@@ -39,7 +39,7 @@
     }
     return cookie;
   }
-  </script>
+</script>
 </body>
 
 </html>
