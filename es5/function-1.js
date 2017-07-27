@@ -1,10 +1,10 @@
-function sum(num1, num2) {
+function sum(num1, num2){
   return num1 + num2;
 }
 
 //callSum1() 在执行sum()函数时传入了this作为this值
 //因为是在全局作用域中调用的，所以传入的就是window对象
-function callSum1(num1, num2) {
+function callSum1(num1, num2){
   return sum.apply(this, arguments);
 }
 
@@ -13,7 +13,7 @@ function callSum1(num1, num2) {
 window.color = "red";
 var o = {color: "blue"};
 
-function sayColor() {
+function sayColor(){
   console.log(this.color);
 }
 
@@ -31,16 +31,40 @@ objectSayColor();//blue
 //闭包是函数
 //闭包是指有权访问另一个函数作用域中的变量的函数
 //创建闭包的常见方式，就是在一个函数内部创建另一个函数
-function createComparisionFunction(propertyName) {
-  return function (object1, object2) {
+function createComparisionFunction(propertyName){
+  return function(object1, object2){
     var value1 = object1[propertyName];
     var value2 = object2[propertyName];
 
-    if (value1 < value2) {
+    if(value1 < value2) {
       return -1;
-    } else if (value1 > value2) {
+    } else if(value1 > value2) {
       return 1;
     }
     return 0;
   }
 }
+
+
+function Person(name, age, job){
+  this.name = name;
+  this.age = age;
+  this.job = job;
+  this.friends = ["Shelby", "Court"];
+}
+
+Person.prototype = {
+  constructor: Person,
+  sayName: function(){
+    console.log(this.name);
+  }
+};
+
+let person1 = new Person("Nicholas", 29, "Software Engineer");
+let person2 = new Person("Greg", 27, "Doctor");
+
+person1.friends.push("Van");
+console.log(person1.friends); //"Shelby,Court,Van"
+console.log(person2.friends); //"Shelby,Court"
+console.log(person1.friends === person2.friends); //false
+console.log(person1.sayName === person2.sayName); //true
