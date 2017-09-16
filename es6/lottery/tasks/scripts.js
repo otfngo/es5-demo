@@ -15,7 +15,6 @@ gulp.task('scripts', () => {
     return gulp.src(['app/js/index.js'])
         .pipe(plumber({
             errorHandler: function () {
-
             }
         }))
         .pipe(named())
