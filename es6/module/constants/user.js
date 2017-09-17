@@ -1,3 +1,3 @@
-const users = ['root', 'admin', 'staff', 'ceo', 'chief', 'moderator'];
+const users = ['root', 'admin', 'staff', 'ceo', 'chief', 'moderator']
 
-export {users};
+export {users}

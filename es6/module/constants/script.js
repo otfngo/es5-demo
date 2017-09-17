@@ -1,1 +1,1 @@
-import {db,users} from '../constants';
+import {db, users} from '../constants'

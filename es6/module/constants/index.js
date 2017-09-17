@@ -1,2 +1,2 @@
-export {db} from './db';
-export {users} from './user';
+export {db} from './db'
+export {users} from './user'
