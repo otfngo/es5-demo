@@ -231,6 +231,19 @@
         // 组件化：vue,react,angular
         // 工程化：webpack,fis
     }
+
+    {
+        let textarea = document.getElementById('text')
+        let timeoutId
+        textarea.addEventListener('keyup', function () {
+            if (timeoutId) {
+                clearTimeout(timeoutId)
+            }
+            timeoutId = setTimeout(function () {
+                // 触发 change 事件
+            }, 100)
+        })
+    }
 </script>
 </body>
 </html>
