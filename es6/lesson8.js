@@ -50,9 +50,3 @@
     }
     console.log(Object.entries(test))
 }
-
-{
-    //扩展运算符
-    // let {a, b, ...c} = {a: 'test', b: 'kill', c: 'ccc', d: 'ddd'}
-    // console.log(c)
-}

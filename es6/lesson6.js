@@ -1,4 +1,5 @@
 {
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/of
     let arr = Array.of(3, 4, 7, 9, 11)
     console.log(arr)
 
@@ -7,6 +8,7 @@
 }
 
 {
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/from
     let p = document.querySelectorAll('p')
     let pArr = Array.from(p)
     p.forEach((item) => {
@@ -42,11 +44,6 @@
     for (let [index, value] of ['1', 'c', 'ks'].entries()) {
         console.log(index, value)
     }
-}
-
-{
-    console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 4))
-    console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 5))
 }
 
 {

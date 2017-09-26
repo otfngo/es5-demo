@@ -6,12 +6,6 @@
 }
 
 {
-    console.log(Number.isFinite(15))
-    console.log(Number.isFinite(15 / 0))
-    console.log(Number.isFinite(NaN))
-    console.log(Number.isFinite(null))
-    console.log(Number.isFinite(undefined))
-
     console.log(Number.isNaN(NaN))
     console.log(Number.isNaN(1))
     console.log(Number.isNaN(null))
@@ -29,7 +23,7 @@
 
 {
     console.log(Number.MAX_SAFE_INTEGER)
-    console.log(Number.MAX_SAFE_INTEGER)
+    console.log(Number.MIN_SAFE_INTEGER)
     console.log(Number.MAX_VALUE)
     console.log(Number.MIN_VALUE)
     console.log(Number.isSafeInteger(19000000000000000000))
@@ -47,11 +41,4 @@
     console.log(Math.sign(5))
     console.log(Math.sign('50'))
     console.log(Math.sign('5a'))
-}
-
-{
-    //立方根
-    console.log(Math.cbrt(-1))
-    console.log(Math.cbrt(-8))
-    console.log(Math.cbrt(8))
 }

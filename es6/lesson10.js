@@ -55,13 +55,6 @@
 }
 
 {
-    let weakList = new WeakSet()
-    let arg = {}
-    weakList.add(arg)
-    console.log(weakList)
-}
-
-{
     let map = new Map()
     let arr = ['123']
 
@@ -75,13 +68,7 @@
 }
 
 {
-    let weakMap = new WeakMap()
-    let o = {}
-    weakMap.set(o, 123)
-    console.log(weakMap.get(o))
-}
-
-{
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map
     let map = new Map()
     let array = []
 
@@ -105,6 +92,7 @@
 }
 
 {
+    // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set
     let set = new Set()
     let array = []
 

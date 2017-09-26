@@ -3,8 +3,8 @@
     let a2 = Symbol()
     console.log(a1, a2, a1 === a2)
 
-    let a3 = Symbol.for('a3')
-    let a4 = Symbol.for('a3')
+    let a3 = Symbol.for('b')
+    let a4 = Symbol.for('b')
     console.log(a3, a4, a3 === a4)
 }
 

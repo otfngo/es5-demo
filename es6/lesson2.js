@@ -1,6 +1,12 @@
 {
-    let a, b, c, rest
+    let a, b, c
     [a, b, c] = [1, 2]
+    console.log(a, b, c)
+}
+
+{
+    let a, b, c
+    [a, b, c = 3] = [1, 2]
     console.log(a, b, c)
 }
 
