@@ -56,6 +56,7 @@
 
         // 助读
         // Child.prototype.__proto__ === Parent.prototype === (new Parent()).__proto__
+        // Child.prototype === (new Child()).__proto__ === new Parent()
         Child.prototype = new Parent()
         Child.prototype.constructor = Child
 
@@ -105,6 +106,23 @@
     {
         // Object.create() 与 new Object() 的区别
         // https://stackoverflow.com/questions/13040684/javascript-inheritance-object-create-vs-new
+    }
+
+    {
+        class Parent {
+            constructor() {
+                this.name = 'parent'
+            }
+        }
+
+        class Child extends Parent {
+            constructor() {
+                super()
+                this.type = 'child'
+            }
+        }
+
+        console.log(new Parent(), new Child())
     }
 
 </script>
