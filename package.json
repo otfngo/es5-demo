@@ -1,0 +1,23 @@
+{
+  "name": "javascript-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ajax-1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otfngo/javascript-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/otfngo/javascript-demo/issues"
+  },
+  "homepage": "https://github.com/otfngo/javascript-demo#readme",
+  "dependencies": {
+    "clipboard": "^2.0.1"
+  }
+}
