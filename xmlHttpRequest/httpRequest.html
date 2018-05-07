@@ -24,7 +24,7 @@
                     return false;
                 }
                 xhr.onreadystatechange = alertContents;
-                xhr.open('GET', 'test.html');
+                xhr.open('GET', 'test.json');
                 xhr.send();
             }
 
@@ -32,13 +32,22 @@
                 try {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
-                            console.log(xhr.responseText, xhr.responseXML)
+                            let type = xhr.getResponseHeader('Content-Type')
+                            if (type.startsWith('application/xml') && xhr.responseXML) {
+                                let xmldoc = xhr.responseXML
+                                let root_node = xmldoc.getElementsByTagName('root').item(0)
+                                console.log(root_node.firstChild.data)
+                            } else if (type.startsWith('application/json')) {
+                                console.log(JSON.parse(xhr.responseText))
+                            } else {
+                                console.log(xhr.responseText)
+                            }
                         } else {
                             console.log('There was a problem with the request.')
                         }
                     }
                 } catch (err) {
-                    console.log('Caught Exception: ' + err.description)
+                    console.log('Caught Exception: ' + err)
                 }
             }
         })();
