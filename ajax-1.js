@@ -83,7 +83,7 @@ function postData(url, data, callback) {
       callback(xhr)
     }
   }
-  xhr.setxhrHeader('Content-Type', 'application/x-www-form-urlencoded')
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
   xhr.send(encodeURIComponent(data))
 }
 
@@ -106,7 +106,7 @@ function postJSON(url, data, callback) {
       callback(xhr)
     }
   }
-  xhr.setxhrHeader('Content-Type', 'application/json')
+  xhr.setRequestHeader('Content-Type', 'application/json')
   xhr.send(JSON.stringify(data))
 }
 
