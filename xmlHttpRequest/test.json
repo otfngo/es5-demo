@@ -1,1 +1,4 @@
-{"userData":"Jane","computedString":"Hi, Jane!"}
+{
+  "userData": "Jane",
+  "computedString": "Hi, Jane!"
+}
