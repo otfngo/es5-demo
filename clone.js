@@ -95,7 +95,7 @@ jsonObj.name = 'jsonObj'
 console.log(jsonObj, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'jsonObj' }, { a: 1, b: 22, c: 333, d: 4444 }
 
 /**
- * assign
+ * Object.assign
  * ES6新增
  * 
  * Object.assign 用法参考：
