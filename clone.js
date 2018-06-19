@@ -55,7 +55,7 @@ console.log(concatArr, arr) // ['concatArr', 1, 22, 333, 4444], [1, 22, 333, 444
  * ... 解构赋值
  * ES6 新增
  * 
- * ... 解构赋值用法参考：
+ * ... 解构赋值 用法参考：
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
  */
 let [...destArr] = arr
@@ -66,7 +66,7 @@ console.log(destArr, arr) // ['destArr', 1, 22, 333, 4444], [1, 22, 333, 4444]
  * ... 展开运算符
  * ES6 新增
  * 
- * ... 展开运算符用法参考：
+ * ... 展开运算符 用法参考：
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
  */
 let restArr = [...arr]
@@ -85,9 +85,9 @@ let obj = {
 /**
  * JSON
  * 为深拷贝
- * 拷贝时会忽略特定的属性，具体参考 JSON.stringify用法参考
+ * 拷贝时会忽略特定的属性，具体参考 JSON.stringify 用法参考
  * 
- * JSON.stringify用法参考：
+ * JSON.stringify 用法参考：
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
  */
 let jsonObj = JSON.parse(JSON.stringify(obj))
@@ -98,7 +98,7 @@ console.log(jsonObj, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'jsonObj' }, 
  * assign
  * ES6新增
  * 
- * Object.assign用法参考：
+ * Object.assign 用法参考：
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
 let assignObj = Object.assign({}, obj)
@@ -109,7 +109,7 @@ console.log(assignObj, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'assignObj'
  * ... 解构赋值
  * ES6 新增
  * 
- * ... 解构赋值用法参考：
+ * ... 解构赋值 用法参考：
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
  */
 let { ...destObj } = obj
@@ -120,7 +120,7 @@ console.log(destObj, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'destObj' }, 
  * ... 展开运算符
  * ES6 新增
  * 
- * ... 展开运算符用法参考：
+ * ... 展开运算符 用法参考：
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
  */
 let restObj = { ...obj }
