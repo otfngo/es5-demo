@@ -84,24 +84,45 @@ let obj = {
 
 /**
  * JSON
+ * 为深拷贝
+ * 拷贝时会忽略特定的属性，具体参考 JSON.stringify用法参考
  * 
- * undefined and function 类型的属性会被忽略
- * Date 类型的属性会被转换为字符串
+ * JSON.stringify用法参考：
+ * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
  */
-let obj1 = JSON.parse(JSON.stringify(obj))
-obj1.name = 'obj1'
-console.log(obj1, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'obj1' }, { a: 1, b: 22, c: 333, d: 4444 }
+let jsonObj = JSON.parse(JSON.stringify(obj))
+jsonObj.name = 'jsonObj'
+console.log(jsonObj, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'jsonObj' }, { a: 1, b: 22, c: 333, d: 4444 }
 
-let { ...obj2
-} = obj
-obj2.name = 'obj2'
-console.log(obj2, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'obj2' }, { a: 1, b: 22, c: 333, d: 4444 }
+/**
+ * assign
+ * ES6新增
+ * 
+ * Object.assign用法参考：
+ * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+ */
+let assignObj = Object.assign({}, obj)
+assignObj.name = 'assignObj'
+console.log(assignObj, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'assignObj' }, { a: 1, b: 22, c: 333, d: 4444 }
 
-let obj3 = { ...obj
-}
-obj3.name = 'obj3'
-console.log(obj3, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'obj3' }, { a: 1, b: 22, c: 333, d: 4444 }
+/**
+ * ... 解构赋值
+ * ES6 新增
+ * 
+ * ... 解构赋值用法参考：
+ * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+ */
+let { ...destObj } = obj
+destObj.name = 'destObj'
+console.log(destObj, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'destObj' }, { a: 1, b: 22, c: 333, d: 4444 }
 
-let obj4 = Object.assign({}, obj)
-obj4.name = 'obj4'
-console.log(obj4, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'obj4' }, { a: 1, b: 22, c: 333, d: 4444 }
+/**
+ * ... 展开运算符
+ * ES6 新增
+ * 
+ * ... 展开运算符用法参考：
+ * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+ */
+let restObj = { ...obj }
+restObj.name = 'restObj'
+console.log(restObj, obj) // { a: 1, b: 22, c: 333, d: 4444, name: 'restObj' }, { a: 1, b: 22, c: 333, d: 4444 }
