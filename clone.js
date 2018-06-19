@@ -83,7 +83,7 @@ let obj = {
 }
 
 /**
- * 存在缺陷
+ * JSON
  * 
  * undefined and function 类型的属性会被忽略
  * Date 类型的属性会被转换为字符串
