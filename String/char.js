@@ -1,13 +1,13 @@
 /**
- * 浅析获取字符串中字符
+ * 浅析字符串中双字节字符与四字节字符的处理
  */
 
 
 /**
- * 单字节字符：
- * 码点在 \u0000 ~ \uFFFF 之间的字符，即码点在 0 ~ 65535 之间的字符
+ * 双字节字符：
+ * Unicode编码在 \u0000 ~ \uFFFF 之间的字符，即码点在 0 ~ 65535 之间的字符
  * 
- * 对于单字节字符，可以使用 charAt(0), substring(0, 1) 获取第一个字符
+ * 对于双字节字符，可以使用 charAt(0), substring(0, 1) 获得第一个字符
  */
 let str = '您'
 
@@ -17,12 +17,11 @@ console.log(str.substring(0, 1)) // 您
 console.log(str.charCodeAt(0)) // 24744
 
 /**
- * 双字节字符：
- * 码点超出 \u0000 ~ \uFFFF 范围的字符，或者说码点不在 0 ~ 65535 之间的字符
+ * 四字节字符：
+ * Unicode编码超出 \u0000 ~ \uFFFF 范围的字符，或者说码点不在 0 ~ 65535 之间的字符
  * 
- * 对于双字节字符，使用 charAt(0), substring(0, 1) 都不能得到正确的结果
+ * 对于四字节字符，使用 charAt(0), substring(0, 1) 都不能得到正确的结果
  */
-
 let strDouble = '🚀'
 
 // 不正确的结果
@@ -47,7 +46,6 @@ console.log(strMixed.split('').reverse().join('')) // y��x
 console.log([...strMixed].reverse().join('')) // y🚀x
 
 
-
 function codePointLength(str) {
   /**
    * 方式一
@@ -65,7 +63,7 @@ function codePointLength(str) {
    */
   // let i = 0
   // for (let c of str) {
-  //   ++i
+  //   i++
   // }
   // return i
 
