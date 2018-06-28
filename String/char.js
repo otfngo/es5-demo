@@ -63,7 +63,7 @@ function codePointLength(str) {
    */
   // let i = 0
   // for (let c of str) {
-  //   ++i
+  //   i++
   // }
   // return i
 }
