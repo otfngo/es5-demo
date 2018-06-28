@@ -68,4 +68,9 @@ function codePointLength(str) {
   //   ++i
   // }
   // return i
+
+  /**
+   * 方式四
+   */
+  // return Array.from(str).length
 }
