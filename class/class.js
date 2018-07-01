@@ -1,12 +1,30 @@
 class Point {
   constructor(x, y) {
+    console.log(new.target.name)
     this.x = x
     this.y = y
+  }
+  static hello() {
+    console.log('hello, world')
   }
   toString() {
     return `(${this.x}, ${this.y})`
   }
 }
+
+class ColorPoint extends Point {
+  constructor(x, y, color) {
+    super(x, y)
+    this.color = color
+  }
+}
+
+new Point() // Point
+new ColorPoint() // ColorPoint
+
+let cp = new ColorPoint(1, 2, 'green')
+cp instanceof ColorPoint; // true
+cp instanceof Point; // true
 
 let person = new class {
   constructor(name) {
