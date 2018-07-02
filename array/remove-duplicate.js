@@ -2,22 +2,26 @@
  * 浅析数组去重的几种方式
  */
 
-
-const arr = [1, 22, 22, 333, 333, 333]
-
+const COUNT = 1000000
+const arr = []
+console.time('random')
+for (let i = 0; i < COUNT; i++) {
+  arr.push(Math.floor(Math.random() * COUNT))
+}
+console.timeEnd('random')
 
 /**
  * 循环
  */
 const forEachLoop = []
+console.time('forEach')
 arr.forEach(item => {
   const has = forEachLoop.includes(item)
   if (!has) {
     forEachLoop.push(item)
   }
 })
-console.log('forEachLoop', forEachLoop) // forEachLoop [1, 22, 333]
-
+console.time('forEach')
 
 /**
  * 循环
