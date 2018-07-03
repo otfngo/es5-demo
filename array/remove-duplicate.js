@@ -1,8 +1,8 @@
 /**
- * 浅析数组去重的几种方式
+ * 比较数组去重的几种方式的效率
  */
 
-const COUNT = 1000000
+const COUNT = 100000
 const arr = []
 console.time('random')
 for (let i = 0; i < COUNT; i++) {
@@ -13,15 +13,25 @@ console.timeEnd('random')
 /**
  * 循环
  */
-const forEachLoop = []
-console.time('forEach')
+console.time('includesLoop')
+const includesLoop = []
 arr.forEach(item => {
-  const has = forEachLoop.includes(item)
+  const has = includesLoop.includes(item)
   if (!has) {
-    forEachLoop.push(item)
+    includesLoop.push(item)
   }
 })
-console.time('forEach')
+console.timeEnd('includesLoop')
+
+console.time('indexOfLoop')
+const indexOfLoop = []
+arr.forEach(item => {
+  const index = indexOfLoop.indexOf(item)
+  if (index === -1) {
+    indexOfLoop.push(item)
+  }
+})
+console.timeEnd('indexOfLoop')
 
 /**
  * 循环
@@ -29,6 +39,7 @@ console.time('forEach')
  * 做下优化，先排序数组
  * 循环时，判断当前项与前一项是否相等，相等就说明重复，不相等就添加进新数组
  */
+console.time('optimizedForEachLoop')
 const sortArr = [...arr].sort()
 const optimizedForEachLoop = []
 let prev = undefined
@@ -41,18 +52,30 @@ sortArr.forEach((item, index) => {
     prev = item
   }
 })
-console.log('optimizedForEachLoop', optimizedForEachLoop) // optimizedForEachLoop, [1, 22, 333]
+console.timeEnd('optimizedForEachLoop')
+
+/**
+ * filter
+ */
+console.time('indexOfFilter')
+const indexOfFilter = arr.filter((item, index) => arr.indexOf(item) === index)
+console.timeEnd('indexOfFilter')
 
 /**
  * Set
  */
-const setArr = [...new Set(arr)]
-// const setArr = Array.from(new Set(arr))
-console.log('setArr', setArr) // setArr [1, 22, 333]
+console.time('setExtendOperator')
+const setExtendOperator = [...new Set(arr)]
+console.timeEnd('setExtendOperator')
+
+console.time('setArrayFrom')
+const setArr = Array.from(new Set(arr))
+console.timeEnd('setArrayFrom')
 
 /**
  * Map
  */
+console.time('mapFilter')
 const seen = new Map()
-const mapArr = arr.filter(item => !seen.has(item) && seen.set(item, 1))
-console.log('mapArr', mapArr) // mapArr, [1, 22, 333]
+const mapFilter = arr.filter(item => !seen.has(item) && seen.set(item, 1))
+console.timeEnd('mapFilter')
