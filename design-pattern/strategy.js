@@ -1,27 +1,3 @@
-function calculateBonus(performanceLevel, salary) {
-  if (performanceLevel === 'S') {
-    return performanceS(salary)
-  }
-  if (performanceLevel === 'A') {
-    return performanceA(salary)
-  }
-  if (performanceLevel === 'B') {
-    return performanceB(salary)
-  }
-}
-
-function performanceS(salary) {
-  return salary * 4
-}
-
-function performanceA(salary) {
-  return salary * 3
-}
-
-function performanceB(salary) {
-  return salary * 2
-}
-
 class Bonus {
   constructor(salary, strategy) {
     this.salary = salary
