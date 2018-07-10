@@ -1,19 +1,24 @@
-let arr = [[0, 1], [2, 3], [4, 5]]
+let arr = [
+  [0, 1],
+  [2, 3],
+  [4, 5]
+]
 let flattened = arr.reduce((acc, cur) => [...acc, ...cur], [])
+console.log(flattened)
 
 // 计算数组中每个元素出现的次数
 let names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice']
 let countedNames = names.reduce((allNames, name) => {
-  if (name in allNames) {
-    allNames[name]++
+  if (allNames.has(name)) {
+    allNames.set(name, allNames.get(name) + 1)
   } else {
-    allNames[name] = 1
+    allNames.set(name, 1)
   }
   return allNames
-}, {})
+}, new Map())
+console.log(countedNames)
 
-let friends = [
-  {
+let friends = [{
     name: 'Anna',
     books: ['Bible', 'Harry Potter'],
     age: 21
@@ -31,3 +36,4 @@ let friends = [
 ]
 
 let allbooks = friends.reduce((acc, cur) => [...acc, ...cur.books], [])
+console.log(allbooks)

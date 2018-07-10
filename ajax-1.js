@@ -21,25 +21,6 @@ function getText(url, callback) {
   xhr.send(null)
 }
 
-// 发起同步的HTTP GET请求以获得指定URL的内容
-// 返回响应文本，或如果请求不成功或响应不是文本就报错
-function getTextSync(url) {
-  let xhr = new XMLHttpRequest()
-  xhr.open('GET', url, false)
-  xhr.send(null)
-
-  if (xhr.status !== 200) {
-    throw new Error(xhr.statusText)
-  }
-
-  let type = xhr.getResponseHeader('Content-Type')
-  if (!type.match(/^text/)) {
-    throw new Error('expected textual response;got:' + type)
-  }
-
-  return xhr.responseText
-}
-
 // 发起HTTP GET响应以获取指定URL的内容
 // 当响应到达时，把它以解析后的XML Document对象、解析后的JSON对象
 // 或字符串形式传递给回调函数

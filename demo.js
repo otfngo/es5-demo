@@ -7,24 +7,22 @@
 }
 
 {
-  function Elem(id) {
-    this.elem = document.getElementById(id)
-  }
-
-  Elem.prototype.html = function (val) {
-    let elem = this.elem
-    if (val) {
-      elem.innerHTML = val
-      return this
-    } else {
-      return elem.innerHTML
+  class Elem {
+    constructor(id) {
+      this.elem = document.getElementById(id)
     }
-  }
-
-  Elem.prototype.on = function (type, fn) {
-    let elem = this.elem
-    elem.addEventListener(type, fn)
-    return this
+    html(val) {
+      if (val) {
+        this.elem.innerHTML = val
+        return this
+      } else {
+        return this.elem.innerHTML
+      }
+    }
+    on(type, fn) {
+      this.elem.addEventListener(type, fn, false)
+      return this
+    }
   }
 }
 
