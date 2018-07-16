@@ -12,19 +12,19 @@
 }
 
 {
-  let div = document.getElementById("myDiv");
+  const div = document.getElementById("myDiv");
+  const overlay = document.getElementById("myMenuOverlay")
+
   div && div.addEventListener("contextmenu", function (event) {
     // 首先，取消默认行为，以保证不显示浏览器默认的上下文菜单
     event.preventDefault()
-    let menu = document.getElementById("myMenu")
-    let overlay = document.getElementById("myMenuOverlay")
+    const menu = document.getElementById("myMenu")
     menu.style.left = event.clientX + "px"
     menu.style.top = event.clientY + "px"
     overlay.style.display = "block"
   }, false)
 
   document.addEventListener("click", function (event) {
-    let overlay = document.getElementById("myMenuOverlay")
     if (event.target === overlay) {
       overlay.style.display = "none"
     }
