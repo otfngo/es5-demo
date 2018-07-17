@@ -1,9 +1,11 @@
 let viewHeight = document.documentElement.clientHeight
+let eles = document.querySelectorAll('img[data-original][lazyload]')
 
 function lazyload() {
-  let eles = document.querySelectorAll('img[data-original][lazyload]')
   Array.prototype.forEach.call(eles, function (item, index) {
-    if (item.dataset.original === '') return
+    if (!item.dataset.original) {
+      return
+    }
 
     let rect = item.getBoundingClientRect()
 
