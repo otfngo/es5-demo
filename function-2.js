@@ -11,14 +11,12 @@
     if (n === 1) return 1
     return n * factorial(n - 1)
   }
-  console.log(factorial(5))
 
   //如果改写成尾递归，只保留一个调用记录，复杂度 O(1)
   function factorial2(n, total = 1) {
     if (n === 1) return total
     return factorial2(n - 1, n * total)
   }
-  console.log(factorial2(5))
 }
 
 {
@@ -30,12 +28,10 @@
     if (n <= 2) return 1
     return Fabonacci(n - 1) + Fabonacci(n - 2)
   }
-  console.log(Fabonacci(10))
 
   // 下面代码是尾递归优化过的 Fibonacci 数列实现
   function Fabonacci2(n, ac1 = 1, ac2 = 1) {
     if (n <= 2) return ac2
     return Fabonacci2(n - 1, ac2, ac1 + ac2)
   }
-  console.log(Fabonacci2(10))
 }
