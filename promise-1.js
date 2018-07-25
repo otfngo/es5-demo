@@ -1,15 +1,3 @@
-// timeout方法返回一个Promise实例，表示一段时间以后才会发生的结果
-// 过了指定的时间（ms参数）以后，Promise实例的状态变为Resolved，
-// 就会触发then方法绑定的回调函数
-function timeout(ms) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, ms)
-  })
-}
-
-timeout(100).then(value => console.log(value))
-
-
 // Promise 新建后立即执行，所以首先输出的是Promise
 // then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
 // 所以Resolved最后输出
