@@ -14,4 +14,7 @@ function getArea(shape, options) {
   return area
 }
 
-getArea(shapeType.triangle, { width: 100, height: 100 })
+getArea(shapeType.triangle, {
+  width: 100,
+  height: 100
+})

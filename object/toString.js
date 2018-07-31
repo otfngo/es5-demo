@@ -9,6 +9,7 @@ console.log(_toString.call([])) // [object Array]
 console.log(_toString.call({})) // [object Object]
 console.log(_toString.call(JSON)) // [object JSON]
 console.log(_toString.call(new RegExp())) // [object RegExp]
+console.log(_toString.call(new Date())) // [object Date]
 console.log(_toString.call(Math)) // [object Math]
 console.log(_toString.call(Symbol())) // [object Symbol]
 
@@ -21,5 +22,6 @@ console.log(typeof []) // 'object'
 console.log(typeof {}) // 'object'
 console.log(typeof JSON) // 'object'
 console.log(typeof new RegExp()) // 'object'
+console.log(typeof new Date()) // 'object'
 console.log(typeof Math) // 'object'
 console.log(typeof Symbol()) // 'symbol'
