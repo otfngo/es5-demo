@@ -4,13 +4,11 @@
       return 'hello'
     }
   }
-
   console.log(SuperClass.staticMethod())
 
   class Sub1Class extends SuperClass {
 
   }
-
   console.log(Sub1Class.staticMethod())
 
   class Sub2Class extends SuperClass {
@@ -18,7 +16,6 @@
       return `${super.staticMethod()},too`
     }
   }
-
   console.log(Sub2Class.staticMethod())
 }
 
@@ -44,7 +41,7 @@
     this.width = width
   }
 
-  Rectangle.prototype.getArea = function () {
+  Rectangle.prototype.getArea = function() {
     return this.length * this.width
   }
 
@@ -65,6 +62,26 @@
   console.log(square.getArea()) // 9
   console.log(square instanceof Square) // true
   console.log(square instanceof Rectangle) // true
+}
+
+{
+  function SuperClass() {}
+
+  function OtherSuperClass() {}
+
+  function MyClass() {
+    SuperClass.call(this)
+    OtherSuperClass.call(this)
+  }
+
+  // 继承一个类
+  MyClass.prototype = Object.create(SuperClass.prototype)
+    // 混合其它
+    // Object.assign 会把 OtherSuperClass 原型上的函数拷贝到 MyClass 原型上，
+    // 使 MyClass 的所有实例都可用 OtherSuperClass 的方法
+  Object.assign(MyClass.prototype, OtherSuperClass.prototype)
+    // 重新指定 constructor
+  MyClass.prototype.constructor = MyClass
 }
 
 {

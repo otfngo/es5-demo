@@ -9,7 +9,7 @@
  * 
  * 对于双字节字符，可以使用 charAt(0), substring(0, 1) 获得第一个字符
  */
-let str = '您'
+const str = '您'
 
 console.log(str.length) // 1
 console.log(str.charAt(0)) // 您
@@ -22,7 +22,7 @@ console.log(str.charCodeAt(0)) // 24744
  * 
  * 对于四字节字符，使用 charAt(0), substring(0, 1) 都不能得到正确的结果
  */
-let strDouble = '🚀'
+const strDouble = '🚀'
 
 // 不正确的结果
 console.log(strDouble.length) // 2
@@ -33,8 +33,8 @@ console.log(strDouble.charCodeAt(0)) // 55357
 // 正确的结果
 console.log(codePointLength(strDouble)) // 1
 console.log([...strDouble][0]) // 🚀
-console.log(String.fromCodePoint(strDouble.codePointAt(0))) // 🚀
 console.log(strDouble.codePointAt(0)) // 128640
+console.log(String.fromCodePoint(strDouble.codePointAt(0))) // 🚀
 
 
 /**
