@@ -47,8 +47,8 @@ export default class LinkedList {
         node.next = prev.next
         prev.next = node
       }
-      this.count++
-        return true
+      this.count++;
+      return true
     }
     return false
   }
@@ -62,8 +62,8 @@ export default class LinkedList {
         current = prev.next
         prev.next = current.next
       }
-      this.count--
-        return current
+      this.count--;
+      return current
     }
     return undefined
   }
