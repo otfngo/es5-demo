@@ -131,6 +131,7 @@ export default class BinarySearchTree {
       node.right = this.removeNode(node.right, key)
       return node
     }
+
     // key is equal to node.key
     // handle 3 special conditions
     // 1 - a leaf node
